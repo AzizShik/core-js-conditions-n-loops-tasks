@@ -175,8 +175,76 @@ function convertToRomanNumerals(num) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
+
+function convertNumberToString(numberStr) {
+  let result = '';
+  const currentNumberStr = numberStr;
+
+  let index = 0;
+
+  while (index < currentNumberStr.length) {
+    let firstDigit;
+
+    if (currentNumberStr[index] === '.' || currentNumberStr[index] === '-') {
+      firstDigit = currentNumberStr[index];
+    } else {
+      firstDigit = Number(currentNumberStr[index]);
+    }
+
+    let word = '';
+
+    switch (firstDigit) {
+      case '-':
+        word = 'minus';
+        break;
+      case 0:
+        word = 'zero';
+        break;
+      case 1:
+        word = 'one';
+        break;
+      case 2:
+        word = 'two';
+        break;
+      case 3:
+        word = 'three';
+        break;
+      case 4:
+        word = 'four';
+        break;
+      case 5:
+        word = 'five';
+        break;
+      case 6:
+        word = 'six';
+        break;
+      case 7:
+        word = 'seven';
+        break;
+      case 8:
+        word = 'eight';
+        break;
+      case 9:
+        word = 'nine';
+        break;
+      case 10:
+        word = 'ten';
+        break;
+
+      default:
+        word = 'point';
+    }
+
+    if (index === currentNumberStr.length - 1) {
+      result += `${word}`;
+    } else {
+      result += `${word} `;
+    }
+
+    index += 1;
+  }
+
+  return result;
 }
 
 /**
